@@ -21,3 +21,6 @@ To get started developing right away:
 ## Additional comments 
 
 ## Additional dependencies
+
+* Bootstrap CSS
+* Axios 
