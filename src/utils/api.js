@@ -7,3 +7,11 @@ const contentType = 'application/json'
 axios.defaults.baseURL = baseURL;
 axios.defaults.headers.common['Authorization'] = authorization;
 axios.defaults.headers.post['Content-Type'] = contentType;
+
+export const getAllOfPosts = (category) =>
+    axios.get('/posts')
+         .then(resp => resp.json())
+         .then(data => data)
+         .catch((error) => {
+          console.log(error);
+         });
