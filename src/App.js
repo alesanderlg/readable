@@ -1,19 +1,15 @@
 import React from 'react';
-import Posts from './components/posts/Posts'
+import './assets/css/style.css'
+
+import Nav from './components/Nav/Nav'
+import Posts from './components/Posts/Posts'
 
 function App() {
   return (
     <div>
-        {/** Nav */}
-        <a href='#'>Home</a> |
-        <a href='#'>React</a> |
-        <a href='#'>Redux</a> |
-        <a href='#'>Udacity</a> |
-
-        {/** Posts */}
-        <Posts />
-        
-    </div>
+      <Nav/>
+      <Posts/>
+    </div>      
   );
 }
 
