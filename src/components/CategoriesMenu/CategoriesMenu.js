@@ -3,7 +3,6 @@ import React from 'react'
 import '../../assets/css/style.css'
 
 const CategoriesMenu = () =>(
-
     <div class="col-md-4">
         <div class="aside-widget">
           <div class="section-title">
