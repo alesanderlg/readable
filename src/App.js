@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './assets/css/style.css'
 
-import Header from './components/Header/Header'
-import Posts from './components/Posts/Posts'
-import NewPost from './components/NewPost/NewPost'
-import PostDetails from './components/PostDetails/PostDetails'
+import Posts from './components/posts/Posts'
+import NewPost from './components/newPost/NewPost'
+import PostDetails from './components/postDetails/PostDetails'
 
-import { Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-function App() {
-  return (
-    <div>
-      <Header/>
-      <Switch>
-            <Route path="/" exact render={() => <Posts/>} />
-            <Route path="/newPost" render={() => <NewPost/>} />
-            <Route path="/postDetails" render={() => <PostDetails/>} />
-      </Switch>
-    </div>      
-  );
+class App extends Component {
+
+  render(){
+    return (
+      <div>
+        <BrowserRouter>
+          <Switch>
+              <Route path="/" exact component={Posts} />
+              <Route path="/newPost" render={() => <NewPost/>} />
+              <Route path="/postDetails" render={() => <PostDetails/>} />
+              <Route path='/:category(react|redux|udacity|all)' component={Posts}></Route>
+          </Switch>
+        </BrowserRouter>
+      </div>      
+    )
+  }
 }
 
-export default App;
+export default (App)

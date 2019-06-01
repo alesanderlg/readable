@@ -1,9 +1,7 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import reduxThunk from 'redux-thunk';
-import reducers from './reducers/index';
+import reducer from '../redux/reducers/index';
 import logger from 'redux-logger'
-
-const reducer = combineReducers(reducers);
 
 // Applying middlewares to the store
 const createStoreWithMiddleware = applyMiddleware(reduxThunk, logger)(createStore);

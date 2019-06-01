@@ -8,7 +8,7 @@ const HeaderPosts = () =>(
         </div>
         <div className="col" >
             <select className="browser-default custom-select">
-                <option selected>Order by</option>
+                <option defaultValue>Order by</option>
                 <option value="1">Date</option>
                 <option value="2">Votes</option>
                 </select>
