@@ -9,7 +9,7 @@ import { getPosts,
          getCategories 
 } from '../../utils/api'
 
-const loadPostsSuccess = (data) => {
+const loadPostsSuccess = ({ data }) => {
     return {
         type: LOAD_POSTS_SUCCESS,
         payload: data,
@@ -22,7 +22,7 @@ const loadPostsRequest = () =>{
     }
 }
 
-const loadPostByCategory = (data) => {
+const loadPostByCategory = ({ data }) => {
     return {
         type: LOAD_POSTS_BY_CATEGORY,
         payload: data,

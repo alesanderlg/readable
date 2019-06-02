@@ -1,31 +1,28 @@
-import { 
-    LOAD_POSTS_REQUEST,
-    LOAD_POSTS_SUCCESS, 
-    LOAD_POSTS_BY_CATEGORY 
-} from '../actions/index'
-
+import * as actionTypes from '../actions/index'
 
 const initialState = {
-    data: [],
-    isFetching: false
+    posts: [],
+    isFetching: false,
+    allPosts: []
 }
 
 export default function posts (state = initialState, action) {
-    if(action.type === LOAD_POSTS_REQUEST){
+    if(action.type === actionTypes.LOAD_POSTS_REQUEST){
         return{
             isFetching: true,
-            data: []
+            posts: [],
+            allPosts: []
         }
-    }else if(action.type === LOAD_POSTS_SUCCESS){
+    }else if(action.type === actionTypes.LOAD_POSTS_SUCCESS){
         return {
             isFetching: false,
-            ...action.payload,
+            posts: action.payload,
+            allPosts: action.payload
         }
-    }else if(action.type === LOAD_POSTS_BY_CATEGORY){
-        console.log("LOAD_POSTS_BY_CATEGORY", action.payload)
+    }else if(action.type === actionTypes.LOAD_POSTS_BY_CATEGORY){
         return {
             ...state,
-            ...action.payload
+            posts: action.payload
         }
     }else{
         return state

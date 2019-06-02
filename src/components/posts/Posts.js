@@ -27,9 +27,8 @@ class Posts extends Component{
     }
 
     render(){
-         const posts = !this.props.isFetching ? 
-                this.props.posts.map((post) => <Post key={post.id} post={post}/> ) 
-                : []
+        const { isFetching, posts } = this.props
+        const myPosts = !isFetching ? posts.map((post) => <Post key={post.id} post={post}/> ) : []
         return(    
             <div>  
             <div className="section">
@@ -38,10 +37,10 @@ class Posts extends Component{
                         <div className="col-md-8">
                             <div className="row">
                                 <HeaderPosts /> 
-                                {posts}                          
+                                   {myPosts}                       
                             </div>
                         </div>
-                         <CategoriesMenu />
+                         <CategoriesMenu allPosts={this.props.allPosts}/>
                     </div>
                 </div>
             </div>
@@ -50,17 +49,18 @@ class Posts extends Component{
     }
 }
 
-const mapStateToProps = ({ posts }) =>{
+const mapStateToProps = ({ postReducer }) =>{
     return {
-        isFetching: posts.isFetching,
-        posts: posts.data
+       isFetching: postReducer.isFetching,
+       posts: postReducer.posts,
+       allPosts: postReducer.allPosts
     }
 }
 
 const mapDispatchToProps = (dispatch) =>{
     return {
         loadPosts: () => dispatch(loadPosts()),
-        loadPostsByCategory: (category) => dispatch(loadPostsByCategory(category))
+        loadPostsByCategory: (category) => dispatch(loadPostsByCategory(category)),
     }
 }
 
