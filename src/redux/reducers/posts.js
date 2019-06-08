@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/index'
+import { updateObject } from '../../utils/CommonUtils'
 
 const initialState = {
     posts: [],
@@ -7,25 +8,34 @@ const initialState = {
 }
 
 export default function posts (state = initialState, action) {
-    if(action.type === actionTypes.LOAD_POSTS_REQUEST){
-        return{
-            isFetching: true,
-            posts: [],
-            allPosts: []
-        }
-    }else if(action.type === actionTypes.LOAD_POSTS_SUCCESS){
-        return {
-            isFetching: false,
-            posts: action.payload,
-            allPosts: action.payload
-        }
-    }else if(action.type === actionTypes.LOAD_POSTS_BY_CATEGORY){
-        return {
-            ...state,
-            posts: action.payload
-        }
-    }else{
-        return state
+    switch(action.type){
+        case actionTypes.LOAD_POSTS_REQUEST:
+            return{
+                ...state,
+                isFetching: true,
+                posts: [],
+                allPosts: []
+            }
+        case actionTypes.LOAD_POSTS_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                posts: action.payload,
+                allPosts: action.payload
+            }
+        case actionTypes.LOAD_POSTS_BY_CATEGORY:
+            console.log("LOAD_POSTS_BY_CATEGORY", action.payload)
+            return {
+                ...state,
+                posts: action.payload
+            }
+        case actionTypes.TOGGLE_VOTE_SCORE:
+            return {
+                ...state,
+                posts: [...updateObject(state, action.payload)]
+            }
+        default:
+            return state
     }
 
 }

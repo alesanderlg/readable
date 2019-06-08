@@ -10,10 +10,10 @@ const CategoriesMenu = ({ allPosts }) =>(
             </div>
             <div className="category-widget">
               <ul>
-                <li><Link to='/' href="#" className="cat-1">All<span>{postsCountByCategory(allPosts, 'all')}</span></Link></li>
+                <li><Link to='/' className="cat-1">All<span>{postsCountByCategory(allPosts, 'all')}</span></Link></li>
                 <li><Link to='/react' className="cat-2">React<span>{postsCountByCategory(allPosts,'react')}</span></Link></li>
-                <li><Link to='/redux' href="#" className="cat-3">Redux<span>{postsCountByCategory(allPosts,'redux')}</span></Link></li>
-                <li><Link to='/udacity' href="#" className="cat-4">Udacity<span>{postsCountByCategory(allPosts,'udacity')}</span></Link></li>
+                <li><Link to='/redux' className="cat-3">Redux<span>{postsCountByCategory(allPosts,'redux')}</span></Link></li>
+                <li><Link to='/udacity' className="cat-4">Udacity<span>{postsCountByCategory(allPosts,'udacity')}</span></Link></li>
               </ul>
             </div>
           </div>
@@ -21,6 +21,7 @@ const CategoriesMenu = ({ allPosts }) =>(
 )
 
 const postsCountByCategory = (allPosts, category) =>{
+  console.log("postsCountByCategory", allPosts)
   if(allPosts !== undefined){
     return category === 'all' 
                       ? allPosts.length 

@@ -1,66 +1,75 @@
-import { LOAD_POSTS_REQUEST, 
-         LOAD_POSTS_SUCCESS,
-         LOAD_POSTS_BY_CATEGORY,
-         RECEIVE_CATEGORIES 
-} from './index'
+import * as actionTypes from './index'
 
-import { getPosts, 
-         getPostsByCategory,
-         getCategories 
-} from '../../utils/api'
+import * as api from '../../utils/api'
 
 const loadPostsSuccess = ({ data }) => {
     return {
-        type: LOAD_POSTS_SUCCESS,
+        type: actionTypes.LOAD_POSTS_SUCCESS,
         payload: data,
     }
 }
 
 const loadPostsRequest = () =>{
     return {
-        type: LOAD_POSTS_REQUEST,
+        type: actionTypes.LOAD_POSTS_REQUEST,
     }
 }
 
 const loadPostByCategory = ({ data }) => {
     return {
-        type: LOAD_POSTS_BY_CATEGORY,
+        type: actionTypes.LOAD_POSTS_BY_CATEGORY,
         payload: data,
     }
 }
 
 const receiveCategories = (categories) =>{
     return {
-        type: RECEIVE_CATEGORIES,
+        type: actionTypes.RECEIVE_CATEGORIES,
         payload: categories,
+    }
+}
+
+const toggleVoteScore = ({ data }) =>{
+    return {
+        type: actionTypes.TOGGLE_VOTE_SCORE,
+        payload: data
     }
 }
 
 export const loadPosts = () =>{
     return (dispatch) =>{
         dispatch(loadPostsRequest())
-        return getPosts()
-            .then((data) => {
-                dispatch(loadPostsSuccess(data))
-            })
+        return api.getPosts()
+                  .then((data) => {
+                    dispatch(loadPostsSuccess(data))
+                  })
     }
 }
 
 export const loadPostsByCategory = (category) =>{
     return (dispatch) =>{
-        return getPostsByCategory(category)
-            .then((data) => {
-                dispatch(loadPostByCategory(data))
-            })
+        return api.getPostsByCategory(category)
+                  .then((data) => {
+                    dispatch(loadPostByCategory(data))
+                  })
     }
 }
 
 export const loadCategories = () =>{
     return (dispatch) =>{
-        return getCategories()
-            .then((data) =>{
-                dispatch(receiveCategories(data))
-            })
+        return api.getCategories()
+                  .then((data) =>{
+                    dispatch(receiveCategories(data))
+                   })
+    }
+}
+
+export const handleToggleVoteScore = (id, option) =>{
+    return (dispatch) =>{
+        return api.voteScore(id, option)
+                  .then((data) =>{
+                    dispatch(toggleVoteScore(data))
+                  })
     }
 }
 

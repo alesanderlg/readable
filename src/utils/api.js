@@ -24,7 +24,16 @@ export const getPostsByCategory = (category) =>
 
 export const getCategories = () =>
     axios.get('/categories')
-          .then(data => data)
-          .catch((error) => {
+         .then(data => data)
+         .catch((error) => {
               console.log(error);
           });
+
+export const voteScore = (id, option) =>
+    axios.post(`/posts/${id}`, {
+        option
+    })
+    .then(data => data)
+    .catch((error) => {
+         console.log(error);
+     });
