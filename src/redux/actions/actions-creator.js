@@ -36,6 +36,13 @@ const toggleVoteScore = ({ data }) =>{
     }
 }
 
+const loadPostsByIdSuccess = ({ data }) =>{
+    return {
+        type: actionTypes.LOAD_POSTS_BY_ID,
+        payload: data
+    }
+}
+
 export const loadPosts = () =>{
     return (dispatch) =>{
         dispatch(loadPostsRequest())
@@ -69,6 +76,15 @@ export const handleToggleVoteScore = (id, option) =>{
         return api.voteScore(id, option)
                   .then((data) =>{
                     dispatch(toggleVoteScore(data))
+                  })
+    }
+}
+
+export const loadPostsById = (id) =>{
+    return (dispatch) =>{
+        return api.getPostsById(id)
+                  .then((data) =>{
+                      dispatch(loadPostsByIdSuccess(data))
                   })
     }
 }

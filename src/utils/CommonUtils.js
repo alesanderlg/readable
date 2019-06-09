@@ -1,4 +1,3 @@
-
 const performChange = (post, updatedPost) =>{
     return post.id === updatedPost.id ? updatedPost : post
 }
@@ -24,3 +23,7 @@ export function formatDate (date){
     return new Date(date).toDateString()
 }
 
+export function postsCountByCategory (allPosts, category){
+    return (allPosts !== undefined) ? (category === 'all') ? allPosts.length 
+                : allPosts.filter(post => post.category === category).length : 0
+  }

@@ -18,7 +18,7 @@ const Post = ({ post, handleToggleVoteScore }) => {
                             <span style={{float: 'right'}}> {`by ${post.author}`}</span>
                         </div>
                         <h3 className="post-title">
-                            <Link to='/postDetails'>{`${post.title}`}</Link>
+                            <Link to={`/postDetails/${post.id}`}>{`${post.title}`}</Link>
                         </h3>
                         <p>{post.body}</p>
                         <div className="post-meta">

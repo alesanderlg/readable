@@ -1,5 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+
+import { postsCountByCategory } from '../../utils/CommonUtils'
 import '../../assets/css/style.css'
 
 const CategoriesMenu = ({ allPosts }) =>(
@@ -20,14 +23,8 @@ const CategoriesMenu = ({ allPosts }) =>(
         </div>
 )
 
-const postsCountByCategory = (allPosts, category) =>{
-  console.log("postsCountByCategory", allPosts)
-  if(allPosts !== undefined){
-    return category === 'all' 
-                      ? allPosts.length 
-                      : allPosts.filter(post => post.category === category).length
-  }
-    return 0
+CategoriesMenu.propTypes = {
+  allPosts: PropTypes.array.isRequired
 }
 
 export default CategoriesMenu

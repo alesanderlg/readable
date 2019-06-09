@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+
 import '../../assets/css/style.css'
 
 import { CategoriesMenu } from '../../components/CategoriesMenu'
 import { Post } from '../../components/Post'
-import HeaderPosts from '../../components/headerPosts/HeaderPosts'
-import { withRouter } from 'react-router-dom'
-
-import { connect } from 'react-redux'
+import { HeaderPosts } from '../../components/HeaderPosts'
 import { loadPosts, loadPostsByCategory, handleToggleVoteScore } from '../../redux/actions/actions-creator'
 
 class PostsContainer extends Component{
@@ -15,18 +16,10 @@ class PostsContainer extends Component{
         this.props.loadPosts()
     }
 
-    componentDidUpdate(prevProps){
-        
-        const previousCategory = prevProps 
-                                && prevProps.match 
-                                && prevProps.match.params 
-                                && prevProps.match.params.category
+    componentDidUpdate(prevProps){       
+        const previousCategory = prevProps.match.params.category
+        const selectedCategory = this.props.match.params.category
 
-        const selectedCategory = this.props.match 
-                                && this.props.match.params 
-                                && this.props.match.params.category
-        console.log("previousCategory", previousCategory)
-        console.log("selectedCategory", selectedCategory)
         if(selectedCategory !== previousCategory) {
             if(selectedCategory !== undefined){
                 this.props.loadPostsByCategory(selectedCategory)
@@ -47,19 +40,19 @@ class PostsContainer extends Component{
                     : []
         return(    
             <div>  
-            <div className="section">
-                <div className="container">
-                    <div className="row">	
-                        <div className="col-md-8">
-                            <div className="row">
-                                <HeaderPosts /> 
-                                {myPosts}                       
+                <div className="section">
+                    <div className="container">
+                        <div className="row">	
+                            <div className="col-md-8">
+                                <div className="row">
+                                    <HeaderPosts /> 
+                                    {myPosts}                       
+                                </div>
                             </div>
+                            <CategoriesMenu allPosts={allPosts}/>
                         </div>
-                         <CategoriesMenu allPosts={allPosts}/>
                     </div>
                 </div>
-            </div>
             </div>
         )
     }
@@ -73,12 +66,21 @@ const mapStateToProps = ({ postReducer }) =>{
     }
 }
 
-const mapDispatchToProps = (dispatch) =>{
+const mapDispatchToProps = dispatch =>{
     return {
         loadPosts: () => dispatch(loadPosts()),
         loadPostsByCategory: (category) => dispatch(loadPostsByCategory(category)),
         handleToggleVoteScore: (id, option) => dispatch(handleToggleVoteScore(id, option))
     }
+}
+
+PostsContainer.propTypes = {
+    isFetching: PropTypes.bool.isRequired,
+    posts: PropTypes.array.isRequired,
+    allPosts: PropTypes.array.isRequired,
+    loadPosts: PropTypes.func.isRequired,
+    loadPostsByCategory: PropTypes.func.isRequired,
+    handleToggleVoteScore: PropTypes.func.isRequired,
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps) (PostsContainer))
