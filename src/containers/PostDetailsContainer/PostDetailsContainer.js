@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import '../../assets/css/style.css'
 
-import { PostComments } from '../PostComments'
-import { PostReplay } from '../PostReplay'
-import { PostItem } from '../PostItem'
-import { TagsMenu } from '../TagsMenu'
+import { PostComments } from '../../components/PostComments'
+import { PostReplay } from '../../components/PostReplay'
+import { PostItem } from '../../components/PostItem'
+import { TagsMenu } from '../../components/TagsMenu'
 import { loadPostsById, loadCommentsByPostId, handleToggleVoteScoreComments } from '../../redux/actions/actions-creator'
 
-class PostDetails extends Component {
+class PostDetailsContainer extends Component {
 
     componentDidMount(){
         const postId = this.props.match.params.id
@@ -71,4 +71,4 @@ const mapDispatchToProps = (dispatch) =>{
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (PostDetails)
+export default connect(mapStateToProps, mapDispatchToProps) (PostDetailsContainer)

@@ -1,0 +1,1 @@
+export { default as PostDetailsContainer } from './PostDetailsContainer'
