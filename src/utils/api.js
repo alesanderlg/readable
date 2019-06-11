@@ -38,9 +38,26 @@ export const voteScore = (id, option) =>
          console.log(error)
      })
 
+export const voteScoreComments = (id, option) =>
+     axios.post(`/comments/${id}`, {
+         option
+     })
+     .then(data => data)
+     .catch((error) => {
+          console.log(error)
+      })
+
 export const getPostsById = (id) =>
      axios.get(`/posts/${id}`)
            .then(data => data)
            .catch((error) => {
             console.log(error)
            })
+
+
+export const getCommentsByPostId = (id) =>
+      axios.get(`/posts/${id}/comments`)
+            .then(data => data)
+            .catch((error) => {
+                console.log(error)
+            })

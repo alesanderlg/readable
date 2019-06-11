@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
 import { PostDetails } from '../../components/PostDetails'
 
-const PostDetailsPage = () =>{
+const PostDetailsPage = (props) =>{
     return (
         <Fragment>
-            <PostDetails/>
+            <PostDetails match={props.match}/>
         </Fragment>
     )
 }

@@ -7,6 +7,9 @@ import '../../assets/css/style.css'
 
 import { colorByCategory, formatDate } from '../../utils/CommonUtils'
 
+const UPVOTE = 'upVote'
+const DOWNVOTE = 'downVote'
+
 const Post = ({ post, handleToggleVoteScore }) => {
         return (
             <div className="post post-row">
@@ -23,15 +26,13 @@ const Post = ({ post, handleToggleVoteScore }) => {
                         <p>{post.body}</p>
                         <div className="post-meta">
                             <span style={{'marginRight': '15px'}}>{`${post.commentCount} comments`}</span>
-                            <Link to='/newPost' className="post-category edit" href="#">Edit</Link>
-                            <a className="post-category delete" href="#">Delete</a>
                             <div style={{float: 'right'}}>
                                 <span>Vote</span>
-                                <button className='btn btn-link' onClick={() => handleToggleVoteScore(post.id, 'upVote')}>
+                                <button className='btn btn-link' onClick={() => handleToggleVoteScore(post.id, UPVOTE)}>
                                     <img src={upVote} alt=""/>
                                 </button>
                                 <span>{post.voteScore}</span>
-                                <button className='btn btn-link' onClick={() => handleToggleVoteScore(post.id, 'downVote')}>
+                                <button className='btn btn-link' onClick={() => handleToggleVoteScore(post.id, DOWNVOTE)}>
                                     <img src={downVote} alt=""/>
                                 </button>  
                             </div>                               

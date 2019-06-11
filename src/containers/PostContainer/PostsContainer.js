@@ -70,7 +70,7 @@ const mapDispatchToProps = dispatch =>{
     return {
         loadPosts: () => dispatch(loadPosts()),
         loadPostsByCategory: (category) => dispatch(loadPostsByCategory(category)),
-        handleToggleVoteScore: (id, option) => dispatch(handleToggleVoteScore(id, option))
+        handleToggleVoteScore: (id, option, url) => dispatch(handleToggleVoteScore(id, option, url))
     }
 }
 

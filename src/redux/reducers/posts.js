@@ -1,10 +1,11 @@
 import * as actionTypes from '../actions/index'
-import { updateObject } from '../../utils/CommonUtils'
+import { updateVoteScorePost } from '../../utils/CommonUtils'
 
 const initialState = {
     posts: [],
     isFetching: false,
-    allPosts: []
+    allPosts: [],
+    post: {}
 }
 
 export default function posts (state = initialState, action) {
@@ -32,7 +33,12 @@ export default function posts (state = initialState, action) {
         case actionTypes.TOGGLE_VOTE_SCORE:
             return {
                 ...state,
-                posts: [...updateObject(state, action.payload)]
+                posts: [...updateVoteScorePost(state, action.payload)]
+            }
+        case actionTypes.LOAD_POSTS_BY_ID:
+            return {
+                ...state,
+                post: action.payload
             }
         default:
             return state

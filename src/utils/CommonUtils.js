@@ -1,9 +1,17 @@
-const performChange = (post, updatedPost) =>{
+const performChangeOnPost = (post, updatedPost) =>{
     return post.id === updatedPost.id ? updatedPost : post
 }
 
-export function updateObject(state , updatedPost) {
-   return state.posts.map((post) => performChange(post, updatedPost))
+const performChangeOnComment = (comment, updatedComment) =>{
+    return comment.id === updatedComment.id ? updatedComment : comment
+}
+
+export function updateVoteScorePost(state , updatedPost) {
+   return state.posts.map((post) => performChangeOnPost(post, updatedPost))
+}
+
+export function updateVoteScoreComment(state, updatedComment){
+    return state.comments.map((comment) => performChangeOnComment(comment, updatedComment))
 }
 
 export function colorByCategory (category) {
