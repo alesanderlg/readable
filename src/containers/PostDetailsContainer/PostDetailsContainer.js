@@ -6,17 +6,23 @@ import { PostComments } from '../../components/PostComments'
 import { PostReplay } from '../../components/PostReplay'
 import { PostItem } from '../../components/PostItem'
 import { TagsMenu } from '../../components/TagsMenu'
-import { loadPostsById, loadCommentsByPostId, handleToggleVoteScoreComments } from '../../redux/actions/actions-creator'
+import { 
+    loadPostsById, 
+    loadCommentsByPostId, 
+    handleToggleVoteScoreComments,
+    handleToggleVoteScorePostItem 
+} from '../../redux/actions/actions-creator'
 
 class PostDetailsContainer extends Component {
 
     componentDidMount(){
+        console.log("this.props", this.props)
         const postId = this.props.match.params.id
         this.props.loadPostsById(postId)
         this.props.loadCommentsByPostId(postId)
     }
     render(){
-        const { post, comments, handleToggleVoteScore } = this.props
+        const { post, comments, handleToggleVoteScore, handleToggleVoteScorePostItem } = this.props
         return (
             <div>
                 <div className="section">
@@ -24,7 +30,7 @@ class PostDetailsContainer extends Component {
                         <div className="row">
                             <div className="col-md-8">
                                 <div className="section-row">                  
-                                    <PostItem post={post} />  
+                                    <PostItem post={post} handleToggleVoteScorePostItem={handleToggleVoteScorePostItem}/>  
                                 </div>                  
                                 <div className="section-row">
                                     <h2>Leave a reply</h2>
@@ -67,7 +73,8 @@ const mapDispatchToProps = (dispatch) =>{
     return {
         loadPostsById: (id) => dispatch(loadPostsById(id)),
         loadCommentsByPostId: (id) => dispatch(loadCommentsByPostId(id)),
-        handleToggleVoteScore: (id, option) => dispatch(handleToggleVoteScoreComments(id, option))
+        handleToggleVoteScore: (id, option) => dispatch(handleToggleVoteScoreComments(id, option)),
+        handleToggleVoteScorePostItem: (id, option) => dispatch(handleToggleVoteScorePostItem(id, option))
     }
 }
 

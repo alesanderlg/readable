@@ -8,7 +8,7 @@ import downVote from '../../assets/icons/arrow-down-30.png'
 import { colorByCategory, formatDate } from '../../utils/CommonUtils'
 
 
-const PostItem = ({ post }) =>{
+const PostItem = ({ post, handleToggleVoteScorePostItem }) =>{
     return (
         <Fragment>
             <div className="post-body">
@@ -25,11 +25,11 @@ const PostItem = ({ post }) =>{
                 <Link to='/' className="post-category delete">Delete</Link>
                 <div style={{float: 'right'}}>
                     <span>Vote</span>
-                    <button className='btn btn-link'>
+                    <button className='btn btn-link' onClick={() => handleToggleVoteScorePostItem(post.id, 'upVote')}>
                         <img src={upVote} alt=""/>
                     </button>
                     <span>{post.voteScore}</span>
-                    <button className='btn btn-link'>
+                    <button className='btn btn-link' onClick={() => handleToggleVoteScorePostItem(post.id, 'downVote')}>
                         <img src={downVote} alt=""/>
                     </button>  
                 </div>

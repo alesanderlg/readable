@@ -43,6 +43,13 @@ const toggleVoteScoreComments = ({ data }) =>{
     }
 }
 
+const toggleVoteScorePostItem = ({ data }) =>{
+    return {
+        type: actionTypes.TOGGLE_VOTE_SCORE_POST_ITEM,
+        payload: data
+    }
+}
+
 const loadPostsByIdSuccess = ({ data }) =>{
     return {
         type: actionTypes.LOAD_POSTS_BY_ID,
@@ -100,6 +107,15 @@ export const handleToggleVoteScoreComments = (id, option) =>{
                   .then((data) =>{
                     dispatch(toggleVoteScoreComments(data))
                   })
+    }
+}
+
+export const handleToggleVoteScorePostItem = (id, option) =>{
+    return (dispatch) =>{
+        return api.voteScore(id, option)
+        .then((data) =>{
+          dispatch(toggleVoteScorePostItem(data))
+        })
     }
 }
 

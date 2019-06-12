@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
-import { PostDetails } from '../../components/PostDetails'
+import { PostDetailsContainer } from '../../containers/PostDetailsContainer'
 
 const PostDetailsPage = (props) =>{
     return (
         <Fragment>
-            <PostDetails match={props.match}/>
+            <PostDetailsContainer match={props.match}/>
         </Fragment>
     )
 }

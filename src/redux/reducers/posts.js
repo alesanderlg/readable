@@ -25,7 +25,6 @@ export default function posts (state = initialState, action) {
                 allPosts: action.payload
             }
         case actionTypes.LOAD_POSTS_BY_CATEGORY:
-            console.log("LOAD_POSTS_BY_CATEGORY", action.payload)
             return {
                 ...state,
                 posts: action.payload
@@ -36,6 +35,11 @@ export default function posts (state = initialState, action) {
                 posts: [...updateVoteScorePost(state, action.payload)]
             }
         case actionTypes.LOAD_POSTS_BY_ID:
+            return {
+                ...state,
+                post: action.payload
+            }
+        case actionTypes.TOGGLE_VOTE_SCORE_POST_ITEM:
             return {
                 ...state,
                 post: action.payload
