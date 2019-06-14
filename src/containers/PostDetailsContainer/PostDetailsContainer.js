@@ -4,8 +4,9 @@ import '../../assets/css/style.css'
 
 import { PostComments } from '../../components/PostComments'
 import { PostReplay } from '../../components/PostReplay'
-import { PostItem } from '../../components/PostItem'
 import { TagsMenu } from '../../components/TagsMenu'
+import { Post } from '../../components/Post'
+
 import { 
     loadPostsById, 
     loadCommentsByPostId, 
@@ -29,8 +30,15 @@ class PostDetailsContainer extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-8">
-                                <div className="section-row">                  
-                                    <PostItem post={post} handleToggleVoteScorePostItem={handleToggleVoteScorePostItem}/>  
+                                <div className="section-row">   
+                                    <Post 
+                                        key={post.id} 
+                                        post={post} 
+                                        handleToggleVoteScore={handleToggleVoteScorePostItem}
+                                        commentsEnabled={false}
+                                        editDeleteEnabled={true}
+                                        linkPostDetailEnabled={false}
+                                    />                 
                                 </div>                  
                                 <div className="section-row">
                                     <h2>Leave a reply</h2>

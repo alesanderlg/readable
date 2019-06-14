@@ -36,6 +36,9 @@ class PostsContainer extends Component{
                         key={post.id} 
                         post={post} 
                         handleToggleVoteScore={handleToggleVoteScore}
+                        commentsEnabled={true}
+                        editDeleteEnabled={false}
+                        linkPostDetailEnabled={true}
                     /> ) 
                     : []
         return(    

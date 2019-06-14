@@ -2,9 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import avatar from '../../assets/img/avatar.png'
-import upVote from '../../assets/icons/arrow-up-30.png'
-import downVote from '../../assets/icons/arrow-down-30.png'
 
+import { VoteScore } from '../VoteScore'
 import { formatDate } from '../../utils/CommonUtils'
 
 const PostComments = ({ comment, handleToggleVoteScore}) =>{
@@ -27,16 +26,7 @@ const PostComments = ({ comment, handleToggleVoteScore}) =>{
                     <div className='post-meta' >             
                         <Link to='/newPost' className="post-category edit">Edit</Link>
                         <Link to='/' className="post-category delete">Delete</Link>
-                        <div style={{float: 'right'}}>
-                            <span>Vote</span>
-                            <button className='btn btn-link' onClick={() => handleToggleVoteScore(comment.id, 'upVote', 'comments')} >
-                                <img src={upVote} alt=""/>
-                            </button>
-                            <span>{comment.voteScore}</span>
-                            <button className='btn btn-link' onClick={() => handleToggleVoteScore(comment.id, 'downVote', 'comments')}>
-                                <img src={downVote} alt=""/>
-                            </button>  
-                        </div>
+                        <VoteScore voteScore={comment.voteScore} id={comment.id} handleToggleVoteScore={handleToggleVoteScore}/>
                     </div>
                 </div>
             </div>

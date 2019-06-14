@@ -61,3 +61,12 @@ export const getCommentsByPostId = (id) =>
             .catch((error) => {
                 console.log(error)
             })
+
+export const saveComment = (comment) =>
+      axios.post(``, {
+        comment
+      })
+      .then(data => data)
+      .catch((error) => {
+          console.log(error)
+      })
