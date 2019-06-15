@@ -6,7 +6,13 @@ import '../../assets/css/style.css'
 import { VoteScore } from '../VoteScore'
 import { colorByCategory, formatDate } from '../../utils/CommonUtils'
 
-const Post = ({ post, handleToggleVoteScore, editDeleteEnabled , commentsEnabled, linkPostDetailEnabled }) => {
+const Post = ({ 
+        post, 
+        handleToggleVoteScore, 
+        editDeleteEnabled , 
+        commentsEnabled, 
+        linkPostDetailEnabled }) => {
+
         return (
             <div className="post post-row">
                 <div className="card border-light h-60 shadow bg-white rounded">
@@ -23,7 +29,6 @@ const Post = ({ post, handleToggleVoteScore, editDeleteEnabled , commentsEnabled
                             {!linkPostDetailEnabled && 
                                 `${post.title}`
                             }
-                            
                         </h3>
                         <p>{post.body}</p>
                         <div className="post-meta">

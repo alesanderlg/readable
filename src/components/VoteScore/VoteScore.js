@@ -10,7 +10,7 @@ const VoteScore = ({ voteScore, id, handleToggleVoteScore }) =>{
             <button className='btn btn-link' onClick={() => handleToggleVoteScore(id, 'upVote')}>
                         <img src={upVote} alt=""/>
             </button>
-            <span>{voteScore}</span>
+            <span>{voteScore === undefined ? 1 : voteScore}</span>
             <button className='btn btn-link' onClick={() => handleToggleVoteScore(id, 'downVote')}>
                 <img src={downVote} alt=""/>
             </button>  

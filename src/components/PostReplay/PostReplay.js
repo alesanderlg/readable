@@ -1,4 +1,13 @@
 import React, { Component } from 'react'
+import uuid from 'uuid/v4'
+import { connect } from 'react-redux'
+
+import {
+    handleSaveComment,
+    handleUpdateCommentsCount 
+} from '../../redux/actions/actions-creator'
+
+import * as validador from '../../utils/validador'
 
 class PostReplay extends Component {
 	state = {
@@ -7,29 +16,54 @@ class PostReplay extends Component {
         	timestamp: '',
         	body: '',
         	author: '',
-        	parentId: ''
+			parentId: '',
 		},
-		name: '',
-		comment: ''
+		author: '',
+		comment: '',
 	}
+
 	handleChangeName = (e) =>{
-		const name = e.target.value
-		this.setState(() =>({ name }))
+		const author = e.target.value
+		this.setState(prevState =>({
+			author,
+			newComment:{
+				...prevState.newComment,
+				author: author
+			}
+		 }))
 	}
 	handleChangeComment = (e) =>{
 		const comment = e.target.value
-		this.setState(() =>({ comment }))
+		this.setState(prevState =>({ 
+			comment,
+			newComment:{
+				...prevState.newComment,
+				body: comment
+			}
+		 }))
+		 
 	}
+	
 	handleSubmit = (e) =>{
 		e.preventDefault()
+		let newComment = this.state.newComment
+		newComment.id = uuid()
+		newComment.parentId = this.props.postId
+		newComment.timestamp = Date.now()
 		this.setState(() =>({
-			name: '',
+			newComment,
+			author: '',
 			comment: ''
 		}))
+		this.props.dispatch(handleSaveComment(newComment))
+		this.props.dispatch(handleUpdateCommentsCount())
 	}
+
 	render(){
-		const { name, comment } = this.state
+		const { author, comment} = this.state
 		const commentLeft = 250 - comment.length 
+		const errors = validador.validatePostReplay(this.state.author, this.state.comment);
+		const isEnabled = !Object.keys(errors).some(x => errors[x] === true)
 		return(
 			<form className='post-reply' onSubmit={this.handleSubmit}>
 				<div className='row'>
@@ -37,10 +71,10 @@ class PostReplay extends Component {
 						<div className='form-group'>
 							<span>Name *</span>
 							<input 
-								className='input' 
+								className='input'
 								type='text'
 								name='name'
-								value={name}
+								value={author}
 								onChange={this.handleChangeName}
 								/>
 						</div>
@@ -60,9 +94,9 @@ class PostReplay extends Component {
 							)}
 						</div>
 						<button 
-							className='primary-button'
+							className={isEnabled ? 'primary-button': 'btn btn-light'}
 							type='submit'
-							disabled={(name === '') && (comment === '')}
+							disabled={!isEnabled}
 						> Submit </button>
 					</div>
 				</div>
@@ -71,4 +105,4 @@ class PostReplay extends Component {
 	}
 }
 
-export default PostReplay
+export default connect() (PostReplay)

@@ -29,7 +29,7 @@ export const getCategories = () =>
               console.log(error)
           })
 
-export const voteScore = (id, option) =>
+export const saveVoteScore = (id, option) =>
     axios.post(`/posts/${id}`, {
         option
     })
@@ -38,7 +38,7 @@ export const voteScore = (id, option) =>
          console.log(error)
      })
 
-export const voteScoreComments = (id, option) =>
+export const saveVoteScoreComments = (id, option) =>
      axios.post(`/comments/${id}`, {
          option
      })
@@ -63,10 +63,12 @@ export const getCommentsByPostId = (id) =>
             })
 
 export const saveComment = (comment) =>
-      axios.post(``, {
-        comment
+      axios.post(`/comments`, {
+        ...comment
       })
-      .then(data => data)
+      .then(data => {
+          console.log("data", data)
+      })
       .catch((error) => {
           console.log(error)
       })

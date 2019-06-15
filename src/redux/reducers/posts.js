@@ -44,6 +44,14 @@ export default function posts (state = initialState, action) {
                 ...state,
                 post: action.payload
             }
+        case actionTypes.UPDATE_COMMENT_COUNT:
+            return {
+                ...state,
+                post: {
+                    ...state.post,
+                    commentCount: state.post.commentCount+1
+                }
+            }
         default:
             return state
     }

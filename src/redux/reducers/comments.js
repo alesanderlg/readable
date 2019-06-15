@@ -17,6 +17,12 @@ export default function comments (state = initialState, action ){
                 ...state,
                 comments: [...updateVoteScoreComment(state, action.payload)]
             }
+        case actionTypes.SAVE_COMMENT:
+            console.log("SAVE_COMMENT", state)
+            return {
+                ...state,
+                comments: state.comments.concat(action.payload)
+            }
         default:
             return state
     }

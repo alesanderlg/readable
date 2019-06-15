@@ -11,7 +11,7 @@ import {
     loadPostsById, 
     loadCommentsByPostId, 
     handleToggleVoteScoreComments,
-    handleToggleVoteScorePostItem 
+    handleToggleVoteScorePostItem
 } from '../../redux/actions/actions-creator'
 
 class PostDetailsContainer extends Component {
@@ -23,7 +23,12 @@ class PostDetailsContainer extends Component {
         this.props.loadCommentsByPostId(postId)
     }
     render(){
-        const { post, comments, handleToggleVoteScore, handleToggleVoteScorePostItem } = this.props
+        const { 
+            post, 
+            comments, 
+            handleToggleVoteScore, 
+            handleToggleVoteScorePostItem
+        } = this.props
         return (
             <div>
                 <div className="section">
@@ -42,7 +47,9 @@ class PostDetailsContainer extends Component {
                                 </div>                  
                                 <div className="section-row">
                                     <h2>Leave a reply</h2>
-                                    <PostReplay />
+                                    <PostReplay 
+                                        postId={post.id}
+                                    />
                                 </div>
                                 <div className="section-row">
                                     <div className="section-title">
@@ -82,7 +89,7 @@ const mapDispatchToProps = (dispatch) =>{
         loadPostsById: (id) => dispatch(loadPostsById(id)),
         loadCommentsByPostId: (id) => dispatch(loadCommentsByPostId(id)),
         handleToggleVoteScore: (id, option) => dispatch(handleToggleVoteScoreComments(id, option)),
-        handleToggleVoteScorePostItem: (id, option) => dispatch(handleToggleVoteScorePostItem(id, option))
+        handleToggleVoteScorePostItem: (id, option) => dispatch(handleToggleVoteScorePostItem(id, option)),
     }
 }
 

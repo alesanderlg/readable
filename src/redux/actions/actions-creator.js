@@ -64,6 +64,19 @@ const loadCommentsByPostIdSuccess = ({ data }) =>{
     }
 }
 
+const saveComment = (data) =>{
+    return {
+        type: actionTypes.SAVE_COMMENT,
+        payload: data
+    }
+}
+
+const updateCommentsCount = () =>{
+    return {
+        type: actionTypes.UPDATE_COMMENT_COUNT
+    }
+}
+
 export const loadPosts = () =>{
     return (dispatch) =>{
         dispatch(loadPostsRequest())
@@ -94,7 +107,7 @@ export const loadCategories = () =>{
 
 export const handleToggleVoteScore = (id, option) =>{
     return (dispatch) =>{
-        return api.voteScore(id, option)
+        return api.saveVoteScore(id, option)
                   .then((data) =>{
                     dispatch(toggleVoteScorePost(data))
                   })
@@ -103,7 +116,7 @@ export const handleToggleVoteScore = (id, option) =>{
 
 export const handleToggleVoteScoreComments = (id, option) =>{
     return (dispatch) =>{
-        return api.voteScoreComments(id, option)
+        return api.saveVoteScoreComments(id, option)
                   .then((data) =>{
                     dispatch(toggleVoteScoreComments(data))
                   })
@@ -112,7 +125,7 @@ export const handleToggleVoteScoreComments = (id, option) =>{
 
 export const handleToggleVoteScorePostItem = (id, option) =>{
     return (dispatch) =>{
-        return api.voteScore(id, option)
+        return api.saveVoteScore(id, option)
         .then((data) =>{
           dispatch(toggleVoteScorePostItem(data))
         })
@@ -135,6 +148,19 @@ export const loadCommentsByPostId = (id) =>{
                     dispatch(loadCommentsByPostIdSuccess(data))
                 })
     }
+}
+
+export const handleSaveComment = (comment) =>{
+    return (dispatch) =>{
+        return api.saveComment(comment)
+                  .then((data) =>{
+                      dispatch(saveComment(comment))
+                  })
+    }
+}
+
+export const handleUpdateCommentsCount = () =>{
+    return (dispatch) => dispatch(updateCommentsCount())
 }
 
 
