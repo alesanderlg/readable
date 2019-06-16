@@ -6,6 +6,7 @@ import { PostComments } from '../../components/PostComments'
 import { PostReplay } from '../../components/PostReplay'
 import { TagsMenu } from '../../components/TagsMenu'
 import { Post } from '../../components/Post'
+import Header from '../../components/header/Header'
 
 import { 
     loadPostsById, 
@@ -30,6 +31,7 @@ class PostDetailsContainer extends Component {
         } = this.props
         return (
             <div>
+                <Header />
                 <div className="section">
                     <div className="container">
                         <div className="row">

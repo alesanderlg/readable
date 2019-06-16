@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import uuid from 'uuid/v4'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import Header from '../header/Header'
 
 import {
     handleSavePost 
@@ -96,23 +97,24 @@ class NewPost extends Component {
             return <Redirect to='/' />
         }
         return (
-            <form className='post-reply' onSubmit={this.handleSubmit}>
+            <div>
+                <Header />
                 <div className='section'>
-                    <div className='container'>
-                        <div className='row'>
-                            <div className='col-md-8'>
-                                <div className='section-row'>
+                   <div className='container'>
+                      <div className='row'>
+                        <div className='col-md-8'>
+                            <div className='section-row'>
+                                <form className='post-reply' onSubmit={this.handleSubmit}>
                                     <div className='row'>
                                         <div className='col-md-12'>
-                                        <div className='form-group'>
-                                            <select value={selectedCategory} className='browser-default custom-select' onChange={this.handleSelectCategory}>
-                                                <option defaultValue>Choice a category *</option>
-                                                <option value='react'>React</option>
-                                                <option value='redux'>Redux</option>
-                                                <option value='udacity'>Udacity</option>
-                                            </select>
-                                        </div>
-                                        
+                                            <div className='form-group'>
+                                                <select value={selectedCategory} className='browser-default custom-select' onChange={this.handleSelectCategory}>
+                                                    <option defaultValue>Choice a category *</option>
+                                                    <option value='react'>React</option>
+                                                    <option value='redux'>Redux</option>
+                                                    <option value='udacity'>Udacity</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div className='col-md-12'>
                                             <div className='form-group'>
@@ -154,12 +156,13 @@ class NewPost extends Component {
                                             Submit</button>
                                         </div>
                                     </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
         )
     }
 }   
