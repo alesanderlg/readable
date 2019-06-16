@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import '../../assets/css/style.css'
 
-import { VoteScore } from '../VoteScore'
+import { VoteScore } from '../../components/VoteScore'
 import { colorByCategory, formatDate } from '../../utils/CommonUtils'
 import { handleDeletePost } from '../../redux/actions/actions-creator'
 

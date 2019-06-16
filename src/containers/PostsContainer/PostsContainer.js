@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import '../../assets/css/style.css'
 
 import { CategoriesMenu } from '../../components/CategoriesMenu'
-import { Post } from '../../components/Post'
+import { PostContainer } from '../../containers/PostContainer'
 import { loadPosts, loadPostsByCategory, handleToggleVoteScore, handleDeletePost } from '../../redux/actions/actions-creator'
 import Header from '../../components/header/Header'
 class PostsContainer extends Component{
@@ -57,7 +57,7 @@ class PostsContainer extends Component{
         const { isFetching, posts, allPosts, handleToggleVoteScore } = this.props
         const { orderBy } = this.state
         const myPosts = !isFetching ? posts.map((post) => 
-                    <Post 
+                    <PostContainer 
                         key={post.id} 
                         post={post} 
                         handleToggleVoteScore={handleToggleVoteScore}

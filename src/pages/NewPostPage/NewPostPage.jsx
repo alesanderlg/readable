@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
-import { NewPost } from '../../components/NewPost'
+import { NewPostContainer } from '../../containers/NewPostContainer'
 const NewPostPage = () =>{
     return (
         <Fragment>
-            <NewPost/>
+            <NewPostContainer/>
         </Fragment>
     )
 }

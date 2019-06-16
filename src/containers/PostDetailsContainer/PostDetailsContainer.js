@@ -5,7 +5,7 @@ import '../../assets/css/style.css'
 import { PostComments } from '../../components/PostComments'
 import { PostReplay } from '../../components/PostReplay'
 import { TagsMenu } from '../../components/TagsMenu'
-import { Post } from '../../components/Post'
+import { PostContainer } from '../../containers/PostContainer'
 import Header from '../../components/header/Header'
 
 import { 
@@ -37,7 +37,7 @@ class PostDetailsContainer extends Component {
                         <div className="row">
                             <div className="col-md-8">
                                 <div className="section-row">   
-                                    <Post 
+                                    <PostContainer 
                                         key={post.id} 
                                         post={post} 
                                         handleToggleVoteScore={handleToggleVoteScorePostItem}

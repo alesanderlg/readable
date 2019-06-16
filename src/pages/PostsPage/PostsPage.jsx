@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { PostsContainer } from '../../containers/PostContainer';
+import { PostsContainer } from '../../containers/PostsContainer';
 
 const PostsPage = () => {
     return (
