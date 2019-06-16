@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import '../../assets/css/style.css'
 
 import { VoteScore } from '../VoteScore'
 import { colorByCategory, formatDate } from '../../utils/CommonUtils'
+import { handleDeletePost } from '../../redux/actions/actions-creator'
 
-const Post = ({ 
-        post, 
-        handleToggleVoteScore, 
-        editDeleteEnabled , 
-        commentsEnabled, 
-        linkPostDetailEnabled }) => {
+class Post extends Component {
+    render(){
+        const { post, 
+            handleToggleVoteScore, 
+            editDeleteEnabled , 
+            commentsEnabled, 
+            linkPostDetailEnabled,
+            dispatch
+        } = this.props
 
         return (
             <div className="post post-row">
@@ -38,7 +43,7 @@ const Post = ({
                             {editDeleteEnabled &&
                                 <div className='editDelete'>
                                     <Link to='/newPost' className="post-category edit">Edit</Link>
-                                    <Link to='/' className="post-category delete">Delete</Link>
+                                    <Link to='/' onClick={() => dispatch(handleDeletePost(post.id))} className="post-category delete" >Delete</Link>
                                 </div>
                             }
                             <VoteScore voteScore={post.voteScore} id={post.id} handleToggleVoteScore={handleToggleVoteScore} />                               
@@ -47,6 +52,7 @@ const Post = ({
                </div>
             </div>  
         )
+    }       
 }
 
-export default Post
+export default connect() (Post)

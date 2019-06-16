@@ -58,6 +58,11 @@ export default function posts (state = initialState, action) {
                 ...state,
                 posts: [...state.posts, post]
             }
+        case actionTypes.DELETE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter(post => post.id !== action.id)
+            }
         default:
             return state
     }

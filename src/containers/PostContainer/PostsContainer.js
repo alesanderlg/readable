@@ -8,7 +8,7 @@ import '../../assets/css/style.css'
 
 import { CategoriesMenu } from '../../components/CategoriesMenu'
 import { Post } from '../../components/Post'
-import { loadPosts, loadPostsByCategory, handleToggleVoteScore } from '../../redux/actions/actions-creator'
+import { loadPosts, loadPostsByCategory, handleToggleVoteScore, handleDeletePost } from '../../redux/actions/actions-creator'
 import Header from '../../components/header/Header'
 class PostsContainer extends Component{
 
@@ -45,15 +45,12 @@ class PostsContainer extends Component{
 
     orderByDate = () =>{
         const { posts } = this.props
-        console.log("posts", posts)
         posts.sort((a,b) => a.timestamp - b.timestamp).reverse()
-        this.setState({posts})
     }
 
     orderByVoteCounter = () =>{
         const { posts } = this.props
         posts.sort((a,b) => a.voteScore - b.voteScore).reverse()
-        this.setState({posts})
     }
 
     render(){
@@ -67,6 +64,7 @@ class PostsContainer extends Component{
                         commentsEnabled={true}
                         editDeleteEnabled={false}
                         linkPostDetailEnabled={true}
+                        handleDeletePost={handleDeletePost}
                     /> ) 
                     : []
         return(    

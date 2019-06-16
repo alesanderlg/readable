@@ -84,6 +84,13 @@ const savePost = (data) => {
     }
 }
 
+const deletePost = (id) =>{
+    return {
+        type: actionTypes.DELETE_POST,
+        id
+    }
+}
+
 export const loadPosts = () =>{
     return (dispatch) =>{
         dispatch(loadPostsRequest())
@@ -173,8 +180,17 @@ export const handleUpdateCommentsCount = () =>{
 export const handleSavePost = (post) =>{
     return (dispatch) =>{
         return api.savePost(post)
-                  .then((data) =>{
+                  .then((post) =>{
                       dispatch(savePost(post))
+                  })
+    }
+}
+
+export const handleDeletePost = (id) =>{
+    return (dispatch) =>{
+        return api.deletePost(id)
+                  .then((id) =>{
+                    dispatch(deletePost(id))
                   })
     }
 }

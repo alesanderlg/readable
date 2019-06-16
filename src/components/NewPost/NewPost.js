@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import uuid from 'uuid/v4'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
@@ -97,7 +97,7 @@ class NewPost extends Component {
             return <Redirect to='/' />
         }
         return (
-            <div>
+            <Fragment>
                 <Header />
                 <div className='section'>
                    <div className='container'>
@@ -162,7 +162,7 @@ class NewPost extends Component {
                     </div>
                 </div>
             </div>
-        </div>
+        </Fragment>
         )
     }
 }   

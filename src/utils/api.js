@@ -66,9 +66,7 @@ export const saveComment = (comment) =>
       axios.post(`/comments`, {
         ...comment
       })
-      .then(data => {
-          console.log("data", data)
-      })
+      .then(data => data)
       .catch((error) => {
           console.log(error)
       })
@@ -77,9 +75,14 @@ export const savePost = (post) =>
       axios.post(`/posts`, {
         ...post
       })
-      .then(data => {
-          console.log("data", data)
-      })
+      .then(data => data)
       .catch((error) => {
           console.log(error)
       })
+
+export const deletePost = (id) =>
+      axios.delete(`/posts/${id}`)
+           .then(data => data)
+           .catch((error) => {
+                console.log(error)
+            })
