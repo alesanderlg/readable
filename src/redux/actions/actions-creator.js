@@ -77,6 +77,13 @@ const updateCommentsCount = () =>{
     }
 }
 
+const savePost = (data) => {
+    return {
+        type: actionTypes.ADD_POST,
+        payload: data
+    }
+}
+
 export const loadPosts = () =>{
     return (dispatch) =>{
         dispatch(loadPostsRequest())
@@ -161,6 +168,15 @@ export const handleSaveComment = (comment) =>{
 
 export const handleUpdateCommentsCount = () =>{
     return (dispatch) => dispatch(updateCommentsCount())
+}
+
+export const handleSavePost = (post) =>{
+    return (dispatch) =>{
+        return api.savePost(post)
+                  .then((data) =>{
+                      dispatch(savePost(post))
+                  })
+    }
 }
 
 

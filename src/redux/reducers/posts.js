@@ -52,6 +52,12 @@ export default function posts (state = initialState, action) {
                     commentCount: state.post.commentCount+1
                 }
             }
+        case actionTypes.ADD_POST:
+            const post = action.payload
+            return {
+                ...state,
+                posts: [...state.posts, post]
+            }
         default:
             return state
     }

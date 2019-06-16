@@ -72,3 +72,14 @@ export const saveComment = (comment) =>
       .catch((error) => {
           console.log(error)
       })
+
+export const savePost = (post) =>
+      axios.post(`/posts`, {
+        ...post
+      })
+      .then(data => {
+          console.log("data", data)
+      })
+      .catch((error) => {
+          console.log(error)
+      })

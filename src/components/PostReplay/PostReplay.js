@@ -50,13 +50,16 @@ class PostReplay extends Component {
 		newComment.id = uuid()
 		newComment.parentId = this.props.postId
 		newComment.timestamp = Date.now()
+
+		this.props.dispatch(handleSaveComment(newComment))
+		this.props.dispatch(handleUpdateCommentsCount())
+
 		this.setState(() =>({
 			newComment,
 			author: '',
 			comment: ''
 		}))
-		this.props.dispatch(handleSaveComment(newComment))
-		this.props.dispatch(handleUpdateCommentsCount())
+		
 	}
 
 	render(){
@@ -84,7 +87,7 @@ class PostReplay extends Component {
 							<textarea 
 								className='input'
 								name='message' 
-								placeholder='Comment'
+								placeholder='Comment *'
 								value={comment}
 								maxLength={250}
 								onChange={this.handleChangeComment}

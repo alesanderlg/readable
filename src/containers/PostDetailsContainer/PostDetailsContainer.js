@@ -17,7 +17,6 @@ import {
 class PostDetailsContainer extends Component {
 
     componentDidMount(){
-        console.log("this.props", this.props)
         const postId = this.props.match.params.id
         this.props.loadPostsById(postId)
         this.props.loadCommentsByPostId(postId)
