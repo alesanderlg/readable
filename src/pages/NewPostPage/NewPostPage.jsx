@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import { NewPostContainer } from '../../containers/NewPostContainer'
-const NewPostPage = () =>{
+const NewPostPage = (props) =>{
     return (
         <Fragment>
-            <NewPostContainer/>
+            <NewPostContainer match={props.match}/>
         </Fragment>
     )
 }

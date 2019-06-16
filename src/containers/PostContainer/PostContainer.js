@@ -42,7 +42,7 @@ class Post extends Component {
                             }
                             {editDeleteEnabled &&
                                 <div className='editDelete'>
-                                    <Link to='/newPost' className="post-category edit">Edit</Link>
+                                    <Link to={`/edit/${post.id}`} className="post-category edit">Edit</Link>
                                     <Link to='/' onClick={() => dispatch(handleDeletePost(post.id))} className="post-category delete" >Delete</Link>
                                 </div>
                             }

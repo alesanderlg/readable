@@ -4,7 +4,6 @@ import '../../assets/css/style.css'
 
 import { PostComments } from '../../components/PostComments'
 import { PostReplay } from '../../components/PostReplay'
-import { TagsMenu } from '../../components/TagsMenu'
 import { PostContainer } from '../../containers/PostContainer'
 import Header from '../../components/header/Header'
 
@@ -66,9 +65,6 @@ class PostDetailsContainer extends Component {
                                         )
                                     })}
                                 </div>     
-                            </div>
-                            <div className="col-md-4">
-                                <TagsMenu />
                             </div>
                         </div>
                     </div>

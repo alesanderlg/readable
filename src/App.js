@@ -12,9 +12,10 @@ const App = () => {
       <div>
           <Switch>
               <Route path="/" exact component={ PostsPage }  />
-              <Route path="/newPost" render={() => <NewPostPage/>} />
+              <Route path="/newPost" render={ NewPostPage} />
               <Route path="/postDetails/:id" component={ PostDetailsPage } />
               <Route path='/:category(react|redux|udacity)' component={ PostsPage }/>
+              <Route path='/edit/:id' component={ NewPostPage }/>
           </Switch>
       </div>      
     )

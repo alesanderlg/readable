@@ -5,7 +5,9 @@ import { Redirect } from 'react-router-dom'
 import Header from '../../components/header/Header'
 
 import {
-    handleSavePost 
+    handleSavePost,
+    loadPostsById,
+    handleEditPost 
 } from '../../redux/actions/actions-creator'
 
 import * as validador from '../../utils/validador'
@@ -24,7 +26,31 @@ class NewPost extends Component {
         title: '',
         body: '',
         author: '',
-        toHome: false
+        toHome: false,
+        editPost: false
+    }
+
+    componentDidMount(){
+        const postId = this.props.match.params.id
+        if(postId !== undefined){
+            this.props.dispatch(loadPostsById(postId))
+            const { post } = this.props
+            this.setState({
+                title: post.title,
+                body: post.body,
+                author: post.author,
+                selectedCategory: post.category,
+                editPost: true,
+                post:{
+                    id: post.id,
+                    timestamp: Date.now(),
+                    title: post.title,
+                    body: post.body,
+                    author: post.author,
+                    category: post.category,
+                }
+            })
+        }
     }
 
     handleSelectCategory = (e) =>{
@@ -73,12 +99,18 @@ class NewPost extends Component {
 
     handleSubmit = (e) =>{
         e.preventDefault()
-        const post = {
-            ...this.state.post,
-            id: uuid(),
-            timestamp: Date.now()
-        } 
-        this.props.dispatch(handleSavePost(post))
+        if(this.state.editPost){
+            const { post } = this.state
+            this.props.dispatch(handleEditPost(post.id, post))
+        }else{
+            const post = {
+                ...this.state.post,
+                id: uuid(),
+                timestamp: Date.now()
+            }
+            this.props.dispatch(handleSavePost(post))
+        }
+
         this.setState({
             post: {},
             selectedCategory: '',
@@ -165,6 +197,12 @@ class NewPost extends Component {
         </Fragment>
         )
     }
-}   
+} 
+
+const mapStateToProps = ({ postReducer }) =>{
+    return {
+       post: postReducer.post
+    }
+}
     
-export default connect() (NewPost)
+export default connect(mapStateToProps, null) (NewPost)

@@ -86,3 +86,12 @@ export const deletePost = (id) =>
            .catch((error) => {
                 console.log(error)
             })
+
+export const updatePost = (id, post) =>
+        axios.put(`/posts/${id}`, {
+             ...post
+            })
+            .then(data => data)
+            .catch((error) => {
+               console.log(error)
+            })

@@ -63,6 +63,10 @@ export default function posts (state = initialState, action) {
                 ...state,
                 posts: state.posts.filter(post => post.id !== action.id)
             }
+        case actionTypes.EDIT_POST:
+            return {
+                ...state,
+            }
         default:
             return state
     }

@@ -91,6 +91,13 @@ const deletePost = (id) =>{
     }
 }
 
+const updatePost = (post) =>{
+    return {
+        type: actionTypes.EDIT_POST,
+        payload: post
+    }
+}
+
 export const loadPosts = () =>{
     return (dispatch) =>{
         dispatch(loadPostsRequest())
@@ -194,6 +201,15 @@ export const handleDeletePost = (id) =>{
                   })
     }
 }
+
+export const handleEditPost = (id, post) =>{
+    return (dispatch) =>{
+        return api.updatePost(id, post)
+                .then((post) =>{
+                    dispatch(updatePost(post))
+                })
+    }
+} 
 
 
 
