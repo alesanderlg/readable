@@ -117,12 +117,13 @@ class NewPost extends Component {
             title: '',
             body: '',
             author: '',
-            toHome: true
+            toHome: true,
+            editPost: false
           })
     }
 
     render(){
-        const { selectedCategory, title, body, author, toHome } = this.state
+        const { selectedCategory, title, body, author, toHome, editPost } = this.state
         const errors = validador.validateNewPost(selectedCategory, title, body, author);
         const isEnabled = !Object.keys(errors).some(x => errors[x] === true)
         if(toHome === true){
@@ -152,6 +153,7 @@ class NewPost extends Component {
                                             <div className='form-group'>
                                                 <span>Name *</span>
                                                 <input 
+                                                    disabled={editPost}
                                                     value={author} 
                                                     className='input' 
                                                     type='text' 
