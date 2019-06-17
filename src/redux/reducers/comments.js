@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/index'
-import { updateVoteScoreComment } from '../../utils/CommonUtils'
+import { updateVoteScoreComment } from '../../utils/commonUtils'
 
 const initialState = {
     comments: []
@@ -21,6 +21,11 @@ export default function comments (state = initialState, action ){
             return {
                 ...state,
                 comments: state.comments.concat(action.payload)
+            }
+        case actionTypes.DELETE_COMMENT:
+            return {
+                ...state,
+                comments: state.comments.filter(comment => comment.id !== action.payload.id)
             }
         default:
             return state

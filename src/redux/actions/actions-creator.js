@@ -91,6 +91,13 @@ const deletePost = (id) =>{
     }
 }
 
+const deleteComment = ({ data }) =>{
+    return {
+        type: actionTypes.DELETE_COMMENT,
+        payload: data
+    }
+}
+
 const updatePost = (post) =>{
     return {
         type: actionTypes.EDIT_POST,
@@ -210,6 +217,15 @@ export const handleEditPost = (id, post) =>{
                 })
     }
 } 
+
+export const handleDeleteComment = (id) =>{
+    return (dispatch) =>{
+        return api.deleteComment(id)
+                  .then((data) =>{
+                    dispatch(deleteComment(data))
+                  })
+    }
+}
 
 
 

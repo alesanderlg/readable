@@ -4,9 +4,14 @@ import { Link } from 'react-router-dom'
 import avatar from '../../assets/img/avatar.png'
 
 import { VoteScore } from '../VoteScore'
-import { formatDate } from '../../utils/CommonUtils'
+import { formatDate } from '../../utils/commonUtils'
 
-const PostComments = ({ comment, handleToggleVoteScore}) =>{
+const PostComments = ({ comment, handleToggleVoteScore, handleDeleteComment, loadPostsById}) =>{
+    
+   const deleteComment = (commentId, postId) =>{
+        handleDeleteComment(commentId)
+        loadPostsById(postId)
+    }
     return (
         <div className="card border-light h-60 shadow bg-white rounded" style={{'marginBottom': '15px'}}>
             <div className="card-body" style={{width:'730px'}}>
@@ -25,7 +30,7 @@ const PostComments = ({ comment, handleToggleVoteScore}) =>{
                     </div>
                     <div className='post-meta' >             
                         <Link to='/newPost' className="post-category edit">Edit</Link>
-                        <Link to='/' className="post-category delete">Delete</Link>
+                        <Link to={`/postDetails/${comment.parentId}`} onClick={() => deleteComment(comment.id, comment.parentId)} className="post-category delete">Delete</Link>
                         <VoteScore voteScore={comment.voteScore} id={comment.id} handleToggleVoteScore={handleToggleVoteScore}/>
                     </div>
                 </div>

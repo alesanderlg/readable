@@ -11,7 +11,8 @@ import {
     loadPostsById, 
     loadCommentsByPostId, 
     handleToggleVoteScoreComments,
-    handleToggleVoteScorePostItem
+    handleToggleVoteScorePostItem,
+    handleDeleteComment
 } from '../../redux/actions/actions-creator'
 
 class PostDetailsContainer extends Component {
@@ -26,7 +27,9 @@ class PostDetailsContainer extends Component {
             post, 
             comments, 
             handleToggleVoteScore, 
-            handleToggleVoteScorePostItem
+            handleToggleVoteScorePostItem,
+            handleDeleteComment,
+            loadPostsById
         } = this.props
         const postNotFound = post.id === undefined
         return (
@@ -64,6 +67,8 @@ class PostDetailsContainer extends Component {
                                                     key={comment.id} 
                                                     comment={comment} 
                                                     handleToggleVoteScore={handleToggleVoteScore}
+                                                    handleDeleteComment={handleDeleteComment}
+                                                    loadPostsById={loadPostsById}
                                                 />
                                             )
                                         })}
@@ -91,6 +96,7 @@ const mapDispatchToProps = (dispatch) =>{
         loadCommentsByPostId: (id) => dispatch(loadCommentsByPostId(id)),
         handleToggleVoteScore: (id, option) => dispatch(handleToggleVoteScoreComments(id, option)),
         handleToggleVoteScorePostItem: (id, option) => dispatch(handleToggleVoteScorePostItem(id, option)),
+        handleDeleteComment: (id) => dispatch(handleDeleteComment(id))
     }
 }
 

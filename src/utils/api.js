@@ -39,7 +39,7 @@ export const saveVoteScore = (id, option) =>
      })
 
 export const saveVoteScoreComments = (id, option) =>
-     axios.post(`/comments/${id}`, {
+    axios.post(`/comments/${id}`, {
          option
      })
      .then(data => data)
@@ -48,7 +48,7 @@ export const saveVoteScoreComments = (id, option) =>
       })
 
 export const getPostsById = (id) =>
-     axios.get(`/posts/${id}`)
+    axios.get(`/posts/${id}`)
            .then(data => data)
            .catch((error) => {
             console.log(error)
@@ -56,14 +56,14 @@ export const getPostsById = (id) =>
 
 
 export const getCommentsByPostId = (id) =>
-      axios.get(`/posts/${id}/comments`)
+    axios.get(`/posts/${id}/comments`)
             .then(data => data)
             .catch((error) => {
                 console.log(error)
             })
 
 export const saveComment = (comment) =>
-      axios.post(`/comments`, {
+    axios.post(`/comments`, {
         ...comment
       })
       .then(data => data)
@@ -72,7 +72,7 @@ export const saveComment = (comment) =>
       })
 
 export const savePost = (post) =>
-      axios.post(`/posts`, {
+    axios.post(`/posts`, {
         ...post
       })
       .then(data => data)
@@ -81,17 +81,24 @@ export const savePost = (post) =>
       })
 
 export const deletePost = (id) =>
-      axios.delete(`/posts/${id}`)
+    axios.delete(`/posts/${id}`)
            .then(data => data)
            .catch((error) => {
                 console.log(error)
             })
 
 export const updatePost = (id, post) =>
-        axios.put(`/posts/${id}`, {
+    axios.put(`/posts/${id}`, {
              ...post
-            })
-            .then(data => data)
-            .catch((error) => {
-               console.log(error)
-            })
+         })
+         .then(data => data)
+         .catch((error) => {
+            console.log(error)
+         })
+
+export const deleteComment = (id) =>
+    axios.delete(`/comments/${id}`)
+         .then(data => data)
+         .catch((error) => {
+            console.log(error)
+          })

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-import { postsCountByCategory } from '../../utils/CommonUtils'
+import { postsCountByCategory } from '../../utils/commonUtils'
 import '../../assets/css/style.css'
 
 const CategoriesMenu = ({ allPosts }) =>(
