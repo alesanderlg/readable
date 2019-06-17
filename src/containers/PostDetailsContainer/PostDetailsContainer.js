@@ -28,44 +28,48 @@ class PostDetailsContainer extends Component {
             handleToggleVoteScore, 
             handleToggleVoteScorePostItem
         } = this.props
+        const postNotFound = post.id === undefined
         return (
             <div>
                 <Header />
                 <div className="section">
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-8">
-                                <div className="section-row">   
-                                    <PostContainer 
-                                        key={post.id} 
-                                        post={post} 
-                                        handleToggleVoteScore={handleToggleVoteScorePostItem}
-                                        commentsEnabled={false}
-                                        editDeleteEnabled={true}
-                                        linkPostDetailEnabled={false}
-                                    />                 
-                                </div>                  
-                                <div className="section-row">
-                                    <h2>Leave a reply</h2>
-                                    <PostReplay 
-                                        postId={post.id}
-                                    />
-                                </div>
-                                <div className="section-row">
-                                    <div className="section-title">
-                                        <h2>{`${post.commentCount} comments`}</h2>
+                              {postNotFound && (
+                                 <span>Ops, it seems this post not found!</span>
+                              )}
+                              {!postNotFound && (
+                                <div className="col-md-8">
+                                    <div className="section-row">   
+                                        <PostContainer 
+                                            key={post.id} 
+                                            post={post} 
+                                            handleToggleVoteScore={handleToggleVoteScorePostItem}
+                                            commentsEnabled={false}
+                                            editDeleteEnabled={true}
+                                            linkPostDetailEnabled={false}
+                                        />                 
                                     </div>
-                                    {comments.map((comment) =>{
-                                        return (
-                                            <PostComments 
-                                                key={comment.id} 
-                                                comment={comment} 
-                                                handleToggleVoteScore={handleToggleVoteScore}
-                                            />
-                                        )
-                                    })}
-                                </div>     
-                            </div>
+                                    <div className="section-row">
+                                        <h2>Leave a reply</h2>
+                                        <PostReplay postId={post.id} />
+                                    </div>
+                                    <div className="section-row">
+                                        <div className="section-title">
+                                            <h2>{`${post.commentCount} comments`}</h2>
+                                        </div>
+                                        {comments.map((comment) =>{
+                                            return (
+                                                <PostComments 
+                                                    key={comment.id} 
+                                                    comment={comment} 
+                                                    handleToggleVoteScore={handleToggleVoteScore}
+                                                />
+                                            )
+                                        })}
+                                    </div> 
+                                </div>
+                              )}  
                         </div>
                     </div>
                 </div>
