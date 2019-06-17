@@ -2,7 +2,8 @@ import * as actionTypes from '../actions/index'
 import { updateVoteScoreComment } from '../../utils/commonUtils'
 
 const initialState = {
-    comments: []
+    comments: [],
+    comment: {}
 }
 
 export default function comments (state = initialState, action ){
@@ -26,6 +27,15 @@ export default function comments (state = initialState, action ){
             return {
                 ...state,
                 comments: state.comments.filter(comment => comment.id !== action.payload.id)
+            }
+        case  actionTypes.LOAD_COMMENT_BY_ID:
+            return {
+                ...state,
+                comment: action.payload
+            }
+        case actionTypes.EDIT_COMMENT:
+            return {
+                ...state,
             }
         default:
             return state

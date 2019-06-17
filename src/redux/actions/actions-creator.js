@@ -105,6 +105,20 @@ const updatePost = (post) =>{
     }
 }
 
+const loadCommentById = ({data}) =>{
+    return {
+        type: actionTypes.LOAD_COMMENT_BY_ID,
+        payload: data
+    }
+}
+
+const updateComment = (data) =>{
+    return {
+        type: actionTypes.EDIT_COMMENT,
+        payload: data
+    }
+}
+
 export const loadPosts = () =>{
     return (dispatch) =>{
         dispatch(loadPostsRequest())
@@ -226,6 +240,24 @@ export const handleDeleteComment = (id) =>{
                   })
     }
 }
+
+export const handleLoadCommentById = (id) =>{
+    return (dispatch) =>{
+        return api.getCommentsById(id)
+                  .then((data) =>{
+                    dispatch(loadCommentById(data))
+                  })
+    }
+}
+
+export const handleEditComment = (id, comment) =>{
+    return (dispatch) =>{
+        return api.updateComment(id, comment)
+                .then((data) =>{
+                    dispatch(updateComment(data))
+                })
+    }
+} 
 
 
 

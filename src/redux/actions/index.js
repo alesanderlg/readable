@@ -15,6 +15,7 @@ export const EDIT_POST = 'EDIT_POST'
 export const ADD_POST = 'ADD_POST'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const EDIT_COMMENT = 'EDIT_COMMENT'
+export const LOAD_COMMENT_BY_ID = 'LOAD_COMMENT_BY_ID'
 
 
 

@@ -102,3 +102,20 @@ export const deleteComment = (id) =>
          .catch((error) => {
             console.log(error)
           })
+
+export const getCommentsById = (id) =>
+    axios.get(`/comments/${id}`)
+         .then(data => data)
+         .catch((error) => {
+            console.log(error)
+         })
+
+export const updateComment = (id, comment) =>
+    axios.put(`/comments/${id}`, {
+            ...comment
+            })
+            .then(data => data)
+            .catch((error) => {
+                 console.log(error)
+            })
+      

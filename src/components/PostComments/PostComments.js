@@ -7,7 +7,7 @@ import { VoteScore } from '../VoteScore'
 import { formatDate } from '../../utils/commonUtils'
 
 const PostComments = ({ comment, handleToggleVoteScore, handleDeleteComment, loadPostsById}) =>{
-    
+
    const deleteComment = (commentId, postId) =>{
         handleDeleteComment(commentId)
         loadPostsById(postId)
@@ -29,7 +29,7 @@ const PostComments = ({ comment, handleToggleVoteScore, handleDeleteComment, loa
                         </div>
                     </div>
                     <div className='post-meta' >             
-                        <Link to='/newPost' className="post-category edit">Edit</Link>
+                        <Link to={`/editComment/${comment.id}`} className="post-category edit">Edit</Link>
                         <Link to={`/postDetails/${comment.parentId}`} onClick={() => deleteComment(comment.id, comment.parentId)} className="post-category delete">Delete</Link>
                         <VoteScore voteScore={comment.voteScore} id={comment.id} handleToggleVoteScore={handleToggleVoteScore}/>
                     </div>
