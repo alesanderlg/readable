@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import avatar from '../../assets/img/avatar.png'
 
 import { VoteScore } from '../VoteScore'
-import { formatDate } from '../../utils/commonUtils'
+import { formatDate } from '../../utils/readableUtils'
 
 const PostComments = ({ comment, handleToggleVoteScore, handleDeleteComment, loadPostsById}) =>{
 

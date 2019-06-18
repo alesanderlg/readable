@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/index'
-import { updateVoteScorePost } from '../../utils/commonUtils'
+import { updateVoteScorePost } from '../../utils/readableUtils'
 
 const initialState = {
     posts: [],
