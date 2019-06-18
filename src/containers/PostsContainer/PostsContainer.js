@@ -9,7 +9,7 @@ import '../../assets/css/style.css'
 import { CategoriesMenu } from '../../components/CategoriesMenu'
 import { PostContainer } from '../../containers/PostContainer'
 import { loadPosts, loadPostsByCategory, handleToggleVoteScore, handleDeletePost } from '../../redux/actions/actions-creator'
-import Header from '../../components/header/Header'
+import Header from '../../components/Header'
 class PostsContainer extends Component{
 
     state = {

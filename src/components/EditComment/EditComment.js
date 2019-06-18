@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import Header from '../../components/header/Header'
+import Header from '../../components/Header'
 import { PostReplay } from '../../components/PostReplay'
 
 import {
