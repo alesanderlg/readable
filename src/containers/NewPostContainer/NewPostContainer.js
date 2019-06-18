@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import uuid from 'uuid/v4'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import Header from '../../components/Header'
+import { Header } from '../../components/Header'
 
 import {
     handleSavePost,

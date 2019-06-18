@@ -5,7 +5,7 @@ import '../../assets/css/style.css'
 import { PostComments } from '../../components/PostComments'
 import { PostReplay } from '../../components/PostReplay'
 import { PostContainer } from '../../containers/PostContainer'
-import Header from '../../components/Header'
+import { Header } from '../../components/Header'
 
 import { 
     loadPostsById, 
