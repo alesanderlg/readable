@@ -1,16 +1,20 @@
 # Readble Project
 
-The goal of this project is to implement an app of the content of the comments.
+The purpose of the project is to implement an app of the content of the comments.
 
-The user should be able to post comments based on category.
-The user should be able to make comments in their own post and other users.
-The user should be able to vote in post and comments.
-The user should be able to edit, delete post and comments.
+The user should be able to post comments based on category, make comments in their own post and other users, to vote in post and comments, to edit, delete post and comments.
 
 ## Prerequisite
 
 * Node `v12.1.0` 
 * NPM `6.9.0`
+
+## Readable API Server is required
+
+The API Server provides endpoints to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments, besides edit and delete posts and comments.
+
+Instructions to install and download the API Server, you can find on the link below.
+[https://github.com/udacity/reactnd-project-readable-starter.git] 
 
 ## Getting Started
 

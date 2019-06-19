@@ -6,7 +6,7 @@ import avatar from '../../assets/img/avatar.png'
 import { VoteScore } from '../VoteScore'
 import { formatDate } from '../../utils/readableUtils'
 
-const PostComments = ({ comment, handleToggleVoteScore, handleDeleteComment, loadPostsById}) =>{
+const PostComments = ({ comment, handleToggleVoteScore, handleDeleteComment, loadPostsById, category}) =>{
 
    const deleteComment = (commentId, postId) =>{
         handleDeleteComment(commentId)
@@ -30,7 +30,7 @@ const PostComments = ({ comment, handleToggleVoteScore, handleDeleteComment, loa
                     </div>
                     <div className='post-meta' >             
                         <Link to={`/editComment/${comment.id}`} className="post-category edit">Edit</Link>
-                        <Link to={`/postDetails/${comment.parentId}`} onClick={() => deleteComment(comment.id, comment.parentId)} className="post-category delete">Delete</Link>
+                        <Link to={`/${category}/${comment.parentId}`} onClick={() => deleteComment(comment.id, comment.parentId)} className="post-category delete">Delete</Link>
                         <VoteScore voteScore={comment.voteScore} id={comment.id} handleToggleVoteScore={handleToggleVoteScore}/>
                     </div>
                 </div>

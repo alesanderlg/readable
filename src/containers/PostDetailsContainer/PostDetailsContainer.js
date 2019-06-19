@@ -55,7 +55,7 @@ class PostDetailsContainer extends Component {
                                     </div>
                                     <div className="section-row">
                                         <h2>Leave a reply</h2>
-                                        <PostReplay postId={post.id} />
+                                        <PostReplay postId={post.id} category={post.category} />
                                     </div>
                                     <div className="section-row">
                                         <div className="section-title">
@@ -69,6 +69,7 @@ class PostDetailsContainer extends Component {
                                                     handleToggleVoteScore={handleToggleVoteScore}
                                                     handleDeleteComment={handleDeleteComment}
                                                     loadPostsById={loadPostsById}
+                                                    category={post.category}
                                                 />
                                             )
                                         })}

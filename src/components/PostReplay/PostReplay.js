@@ -102,7 +102,7 @@ class PostReplay extends Component {
 		const errors = validador.validatePostReplay(this.state.author, this.state.body);
 		const isEnabled = !Object.keys(errors).some(x => errors[x] === true)
 		if(toPostDetails === true){
-            return <Redirect to={`/postDetails/${postId}`} />
+            return <Redirect to={`/${this.props.category}/${postId}`} />
         }
 		return(
 			<form className='post-reply' onSubmit={this.handleSubmit}>
